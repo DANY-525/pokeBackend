@@ -1,14 +1,16 @@
 package com.example.pokemonapp.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Setter
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 public class Pokemon {
-    private String name;
-    private int id;
-    // Other fields as needed
 
-    // Getters and setters
+    private String name;
+    private String url;
+
 }

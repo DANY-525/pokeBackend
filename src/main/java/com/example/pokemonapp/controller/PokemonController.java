@@ -2,6 +2,7 @@ package com.example.pokemonapp.controller;
 
 import com.example.pokemonapp.dto.Vehicle;
 import com.example.pokemonapp.entities.Pokemons;
+import com.example.pokemonapp.model.Pokemon;
 import com.example.pokemonapp.service.PokemonService;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -23,6 +24,12 @@ import reactor.core.publisher.Mono;
 
 public class PokemonController {
     private final PokemonService pokemonService;
-
-
+    @PostMapping
+    public ResponseEntity<Pokemons>  savePokemon (@RequestBody Pokemon pok){
+         return  new ResponseEntity<>(pokemonService.addPokemons(Pokemons.builder().name(pok.getName()).url(pok.getUrl()).build()),HttpStatus.OK);
+    }
+    @GetMapping
+    public ResponseEntity<Iterable<Pokemons>> getPokemons(){
+        return new ResponseEntity<>(pokemonService.getPokemons(),HttpStatus.OK);
+    }
 }
