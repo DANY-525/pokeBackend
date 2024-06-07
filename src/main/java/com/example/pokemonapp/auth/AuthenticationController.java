@@ -1,0 +1,53 @@
+package com.example.pokemonapp.auth;
+
+import com.example.pokemonapp.entities.User;
+import com.example.pokemonapp.service.RegistrationService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/auth")
+
+@RequiredArgsConstructor
+public class AuthenticationController {
+    @Autowired
+    RegistrationService registrationService;
+    private final AuthenticationService service;
+    @PostMapping("/register")
+    public ResponseEntity<?> register(
+            @RequestBody RegisterRequest request
+    ){
+        boolean validatePassword =registrationService.validatePassword(request.getPassword());
+        boolean validateEmail = registrationService.ValidateEmail(request.getEmail());
+        boolean validateAlreadyExistOnDatabase = registrationService.validateEmailExist(request.getEmail());
+        if(!validateEmail){
+            return new ResponseEntity<>("WrongEmail", HttpStatus.NOT_ACCEPTABLE);
+        }else if (!validatePassword){
+            return new ResponseEntity<>("Wrong password",HttpStatus.NOT_ACCEPTABLE);
+        } else if (!validateAlreadyExistOnDatabase) {
+           return new ResponseEntity<>("Email already exist on Database",HttpStatus.NOT_ACCEPTABLE);
+        } else {
+            return  ResponseEntity.ok(service.register(request));
+        }
+    }
+
+    @PostMapping("/authenticate")
+    public ResponseEntity<?> register(
+            @RequestBody AuthenticationRequest request
+    ){
+        boolean validatePassword =registrationService.validatePassword(request.getPassword());
+        boolean validateEmail = registrationService.ValidateEmail(request.getEmail());
+        if(!validateEmail){
+            return new ResponseEntity<>("WrongEmail", HttpStatus.NOT_ACCEPTABLE);
+        }else if (!validatePassword){
+            return new ResponseEntity<>("Wrong password",HttpStatus.NOT_ACCEPTABLE);
+        }  else {
+            return  ResponseEntity.ok(service.authenticate(request));
+        }
+
+    }
+}
