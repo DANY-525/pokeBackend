@@ -27,7 +27,8 @@ public class AuthenticationController {
         if(!validateEmail){
             return new ResponseEntity<>("WrongEmail", HttpStatus.NOT_ACCEPTABLE);
         }else if (!validatePassword){
-            return new ResponseEntity<>("Wrong password",HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>("Wrong password: password contains at least 10 characters, one lowercase letter, one\n" +
+                    "uppercase letter and one of the following characters: !, @, #, ? or ].",HttpStatus.NOT_ACCEPTABLE);
         } else if (!validateAlreadyExistOnDatabase) {
            return new ResponseEntity<>("Email already exist on Database",HttpStatus.NOT_ACCEPTABLE);
         } else {
@@ -44,7 +45,8 @@ public class AuthenticationController {
         if(!validateEmail){
             return new ResponseEntity<>("WrongEmail", HttpStatus.NOT_ACCEPTABLE);
         }else if (!validatePassword){
-            return new ResponseEntity<>("Wrong password",HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>("Wrong password: password contains at least 10 characters, one lowercase letter, one\\n\" +\n" +
+                    "                    \"uppercase letter and one of the following characters: !, @, #, ? or ].",HttpStatus.NOT_ACCEPTABLE);
         }  else {
             return  ResponseEntity.ok(service.authenticate(request));
         }
