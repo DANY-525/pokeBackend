@@ -23,7 +23,7 @@ private final  JwtAuthenticationFilter jwtAuthFilter;
 private final AuthenticationProvider authenticationProvider;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        System.out.println("entre");
+       // System.out.println("entre");
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
@@ -31,6 +31,8 @@ private final AuthenticationProvider authenticationProvider;
 
                              .requestMatchers("/auth/register").permitAll()
                              .requestMatchers("/auth/authenticate").permitAll()
+                             .requestMatchers("/pokemon").permitAll()
+
 
                     .anyRequest().authenticated()
                 )

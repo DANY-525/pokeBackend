@@ -5,6 +5,9 @@ import com.example.pokemonapp.model.Pokemon;
 import com.example.pokemonapp.repository.PokemonRepository;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
 import org.springframework.web.reactive.function.client.WebClient;
@@ -16,7 +19,8 @@ import java.util.List;
 @AllArgsConstructor
 public class PokemonService {
     private final PokemonRepository pokemonRepository;
-    private final WebClient.Builder webClientBuilder;
+    private final WebClient webClient;
+
 
 
     public Pokemons addPokemons(Pokemons pokemons){
@@ -25,7 +29,12 @@ public class PokemonService {
 
     }
 
+
     public Iterable<Pokemons> getPokemons(){
          return pokemonRepository.findAll();
     }
+
+
+
+
 }
