@@ -1,12 +1,15 @@
 package com.example.pokemonapp.service;
 
+import com.example.pokemonapp.entities.Vehiculo;
+import com.example.pokemonapp.repository.VehicleRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-
+@AllArgsConstructor
 public class VehicleService {
-
-  public String getVehicle (){
-      return null;
+    private final VehicleRepository vehicleRepository;
+  public Iterable<Vehiculo>  getVehicles(){
+     return vehicleRepository.findAll();
   }
 }

@@ -15,7 +15,7 @@ public class Vehiculo {
     @Column(name="fecha_soat")
     private String  fechaSoat;
     @Column(name="fecha_techno")
-    private String  fechaSoat;
+    private String  fechaTechno;
     @Column(name="ubicacion")
     private String  ubicacion;
 }
