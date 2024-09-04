@@ -30,8 +30,6 @@ public class User implements UserDetails {
     @Column(name="name")
     private String name;
 
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

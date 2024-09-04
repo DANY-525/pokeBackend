@@ -32,6 +32,7 @@ private final AuthenticationProvider authenticationProvider;
                              .requestMatchers("/auth/register").permitAll()
                              .requestMatchers("/auth/authenticate").permitAll()
                              .requestMatchers("/pokemon").permitAll()
+                             .requestMatchers("/vehicle").permitAll()
 
 
                     .anyRequest().authenticated()

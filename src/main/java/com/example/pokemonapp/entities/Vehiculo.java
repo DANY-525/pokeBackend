@@ -1,7 +1,15 @@
 package com.example.pokemonapp.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@Getter
+@Setter
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
 @Table(name="vehiculos",schema = "pokemon")
 public class Vehiculo {
     @Id
@@ -14,7 +22,7 @@ public class Vehiculo {
     private String  tipo;
     @Column(name="fecha_soat")
     private String  fechaSoat;
-    @Column(name="fecha_techno")
+    @Column(name="fecha_tecno")
     private String  fechaTechno;
     @Column(name="ubicacion")
     private String  ubicacion;
