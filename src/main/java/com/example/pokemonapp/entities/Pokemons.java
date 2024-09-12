@@ -13,7 +13,7 @@ import lombok.*;
 @Table(name="pokemons",schema = "pokemon")
 public class Pokemons {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(name="name")
     private String name;

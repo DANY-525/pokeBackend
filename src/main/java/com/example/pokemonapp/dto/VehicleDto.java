@@ -6,9 +6,10 @@ import java.util.Date;
 @Builder
 
 public class VehicleDto {
+
   private String  placa;
   private String  tipo;
   private Date  fechaSoat;
   private Date  fechaTechno;
-  private Date  ubicacion;
+  private String  ubicacion;
 }

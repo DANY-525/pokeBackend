@@ -10,7 +10,6 @@ import lombok.*;
 @Getter
 @Setter
 public class Vehiculo {
-    private int id;
     private  String numeroPlaca;
     private String tipo;
     private Date fechaSoat;
