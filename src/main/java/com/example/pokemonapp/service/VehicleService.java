@@ -25,7 +25,7 @@ public class VehicleService {
 
 
     @Transactional
-  public Vehiculo addVehicle(VehicleDto vehicleDto){
+    public Vehiculo addVehicle(VehicleDto vehicleDto){
    try {
           return vehicleRepository.save(
                   Vehiculo.builder()
@@ -86,8 +86,5 @@ public class VehicleService {
             throw new VehicleServiceException("Failed to delete vehicle", e);
         }
     }
-
-
-
 
 }
